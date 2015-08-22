@@ -7,15 +7,18 @@ import java.util.TimeZone;
  * Converts UTC time to local time, vice-versa and everything in between
  */
 public class Datelib {
+
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ssZ");
+
     public static String getCurrentDateTimeinLocalTime(){
         Date date = new Date();
-        return niftyFunctions.pollenDateFormat.format(date);
+        return dateFormat.format(date);
     }
 
     public static String converDateTime(Date date){
         String output;
         try{
-            output = niftyFunctions.pollenDateFormat.format(date);
+            output = dateFormat.format(date);
         }catch (Exception e){
             output = "Error in time: Datelib";
             e.printStackTrace();
@@ -65,7 +68,7 @@ public class Datelib {
     public static Date getLocalDatefromUTC(String date){
         Date output;
         try{
-            output = niftyFunctions.pollenDateFormat.parse(date);
+            output = dateFormat.parse(date);
         }catch (Exception e){
             e.printStackTrace();
             output = new Date();
